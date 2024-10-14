@@ -8,16 +8,32 @@ export const Lists = () =>{
     const handleViewLists= async()=>{
         const response = await listGetAll();
         setLists(response.data.listas);
+        console.log(`Total de tarefas: ${response.data.listas[0].tasks.length}`);
         console.log(response.data.listas);
-    }
+    };
+
 
     useEffect(()=>{
         handleViewLists();
-    },[])
+    },[]);
     
 return(
     <div>
-        Listas
+        <div className={styles.listHeader}>
+            <h3>
+            Listas
+            </h3>
+        </div>
+        <div className={styles.listBody}>
+            <div className={styles.listItem}>
+                <div className={styles.listName}>
+                    Nome da tarefa
+                </div>
+                <div className={styles.listAmount}>
+                    Quantidade de tarefas-0
+                </div>
+            </div>
+        </div>
     </div>
 )
 }

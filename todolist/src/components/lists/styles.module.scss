@@ -1,0 +1,35 @@
+.listHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.listBody{
+    padding: 0rem 2rem;
+}
+
+.listItem{
+    padding: 1rem;
+    background-color: #4169e1;
+    transition: transform 0.3s ease;
+    display: flex;
+    color: white;
+    border-radius: 8px;
+}
+
+.listItem:hover{
+    transition: 0.3s ease;
+    background-color: #4b71e0;
+    transform: scale(1.01);
+}
+
+.listName{
+    font-weight: bolder;
+    
+}
+
+.listAmount{
+    margin-left: auto;
+}
