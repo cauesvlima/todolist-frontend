@@ -12,6 +12,7 @@
 
 .listItem{
     padding: 1rem;
+    margin-bottom: 1rem;
     background-color: #4169e1;
     transition: transform 0.3s ease;
     display: flex;
@@ -23,13 +24,20 @@
     transition: 0.3s ease;
     background-color: #4b71e0;
     transform: scale(1.01);
+    cursor: pointer;
 }
 
 .listName{
     font-weight: bolder;
-    
+    span{
+        padding-left: 1rem;
+    }
 }
 
 .listAmount{
     margin-left: auto;
+    span{
+        font-weight: bolder;
+    }
 }
+
