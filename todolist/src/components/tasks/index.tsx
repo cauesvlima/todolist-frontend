@@ -3,8 +3,7 @@ import { useListServices } from '../../services/list';
 import styles from './styles.module.scss';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { CheckBox } from '@mui/icons-material';
-
+import DragHandleTwoToneIcon from '@mui/icons-material/DragHandleTwoTone';
 interface TasksProps {
     listId: number;
 }
@@ -59,13 +58,19 @@ export const Tasks = ({ listId }: TasksProps) => {
                     {listUnique.tarefas.length ? (
                         <div>
                             {listUnique.tarefas.map((task) => (
-                                <div key={task.id} className={styles.itens} style={{ '--task-color': task.color } as React.CSSProperties}>
-                                
-                                    <div className={styles.checkBox}>
-                                        <input type="checkbox" className={styles.checkmark }/>
-                                    </div>
-                                {task.name}
+                                <div key={task.id} className={styles.itemContainer}  >
+                                <div className={styles.itens}>
+                                <div className={styles.checkBox}>
+                                    <input type="checkbox" className={styles.checkmark }/>
+                                </div>
+                                <div className={styles.taskName}>
+                                    {task.name}
+                                </div>
+                                </div>
+                                <div className={styles.taskColor} style={{ '--task-color': task.color } as React.CSSProperties}></div>
+                                    
                             </div>
+                            
                             ))}
                         </div>
                     ) : (

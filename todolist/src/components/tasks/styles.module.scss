@@ -42,12 +42,25 @@
     
 }
 .itens{
-    margin-bottom: 1rem;
-    display: flex;
+    align-items: center;
     height: 3rem;
-    background-color: white;
-    border-radius: 8px;
+    display: flex;
+}
+
+.itemContainer{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    align-items: center;
+    height: 4rem;
+    border-radius: 8px;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+
+.taskColor{
+    border-radius: 0 0 8px 8px;
+    height: 1rem;
+    background-color: #2d79c0;
+    background-color: var(--task-color);
 }
 
 /* Esconde o checkbox original */
@@ -80,4 +93,14 @@
   border: solid white;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
+}
+
+.taskName{
+    width: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.taskName:hover{
+    overflow: visible;
 }
