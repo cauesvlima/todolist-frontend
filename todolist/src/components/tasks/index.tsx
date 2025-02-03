@@ -39,6 +39,9 @@ export const Tasks = ({ listId }: TasksProps) => {
         <div>
             {listUnique ? (
                 <div>
+                    <div className={styles.list}>
+                    {listUnique.nome}
+                    </div>
                     {listUnique.tarefas.length ? (
                         <div>
                             {listUnique.tarefas.map((task) => (

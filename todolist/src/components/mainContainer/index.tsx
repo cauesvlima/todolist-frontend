@@ -6,7 +6,8 @@ import { useState } from 'react';
 
 
 const Container = () =>{
-    const [listSelected, setListSelected] = useState<number | null>(null);
+    const [listSelected, setListSelected] = useState<number>(-1); // Usando um valor numérico padrão
+
 
 
     const handleSelectList = (id: number) => {
@@ -17,7 +18,7 @@ const Container = () =>{
         <Header/>
         <div className={styles.Body}>
             <div className={styles.listsContainer}>
-            <Lists onSelectList={handleSelectList} />
+            <Lists  onSelectList={handleSelectList}  listItem={listSelected}/>
             </div>
             <div className={styles.tasksContainer}>
             {listSelected !== null ? (

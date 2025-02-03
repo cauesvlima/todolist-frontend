@@ -17,7 +17,12 @@ interface ListsProps {
     onSelectList: (id: number) => void;
 }
 
-export const Lists = ({ onSelectList }: ListsProps) => {
+interface ItemProp {
+    listItem: number;
+}
+
+export const Lists = ({ onSelectList, listItem }: ListsProps & ItemProp) => {
+
     const { listGetAll } = useListServices();
     const [lists, setLists] = useState<List[]>([]);
     const [editName, setEditName] = useState(0);
@@ -29,7 +34,7 @@ export const Lists = ({ onSelectList }: ListsProps) => {
         console.log(response.data.listas);
     };
 
-    const viewEdit = (id:number) =>{
+    const viewEdit = (id: number) => {
         setEditName(id);
     };
 
@@ -37,7 +42,7 @@ export const Lists = ({ onSelectList }: ListsProps) => {
         handleViewLists();
     }, []);
 
-    const updateList = () =>{
+    const updateList = () => {
         alert("oi");
     };
 
@@ -49,10 +54,16 @@ export const Lists = ({ onSelectList }: ListsProps) => {
             <div className={styles.listBody}>
                 {lists.length > 0 ? (
                     lists.map((list) => (
-                        <div className={styles.listItem}  onClick={() => onSelectList(list.id)} onMouseEnter={() => viewEdit(list.id)} onMouseLeave={() => viewEdit(0)}  key={list.id}>
+                        <div
+                            className={`${styles.listItem} ${list.id === listItem ? styles.selected : ''}`}
+                            onClick={() => onSelectList(list.id)}
+                            onMouseEnter={() => viewEdit(list.id)}
+                            onMouseLeave={() => viewEdit(0)}
+                            key={list.id}
+                        >
                             <div className={styles.listName}>
                                 {list.nome}
-                                {editName=== list.id && (
+                                {editName === list.id && (
                                     <span onClick={updateList}>Editar</span>
                                 )}
                             </div>

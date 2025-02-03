@@ -22,7 +22,6 @@
 
 .listItem:hover{
     transition: 0.3s ease;
-    background-color: #4b71e0;
     transform: scale(1.01);
     cursor: pointer;
 }
@@ -41,3 +40,6 @@
     }
 }
 
+.selected {
+    background-color: #3b58af;
+}
