@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useListServices } from '../../services/list';
 import styles from './styles.module.scss';
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { CheckBox } from '@mui/icons-material';
 
 interface TasksProps {
     listId: number;
@@ -36,16 +39,31 @@ export const Tasks = ({ listId }: TasksProps) => {
     }, [listId]);
 
     return (
-        <div>
+        <div className={styles.list}>
             {listUnique ? (
                 <div>
-                    <div className={styles.list}>
-                    {listUnique.nome}
+                    <div className={styles.listHeader}>
+                        <div className={styles.listName}>
+                        {listUnique.nome}
+                        
+                    </div>
+                    <div className={styles.icons}>
+                        <span className={styles.icon}>
+                            <ModeEditOutlineOutlinedIcon/>
+                        </span>
+                        <span className={styles.icon}>
+                            <DeleteOutlineOutlinedIcon/>
+                        </span>
+                    </div>
                     </div>
                     {listUnique.tarefas.length ? (
                         <div>
                             {listUnique.tarefas.map((task) => (
-                                <div key={task.id} className={styles.teste} style={{ '--task-color': task.color } as React.CSSProperties}>
+                                <div key={task.id} className={styles.itens} style={{ '--task-color': task.color } as React.CSSProperties}>
+                                
+                                    <div className={styles.checkBox}>
+                                        <input type="checkbox" className={styles.checkmark }/>
+                                    </div>
                                 {task.name}
                             </div>
                             ))}
@@ -55,7 +73,7 @@ export const Tasks = ({ listId }: TasksProps) => {
                     )}
                 </div>
             ) : (
-                <p>Carregando...</p>
+                <p>Nenhuma lista de tarefas selecionada</p>
             )}
         </div>
     );
