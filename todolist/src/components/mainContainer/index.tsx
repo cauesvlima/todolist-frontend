@@ -6,20 +6,25 @@ import { useState } from 'react';
 
 
 const Container = () =>{
-    const [listSelected, setListSelected] = useState(false);
+    const [listSelected, setListSelected] = useState<number | null>(null);
 
-    const SelectList = () =>{
-        setListSelected(!listSelected);
-    }
+
+    const handleSelectList = (id: number) => {
+        setListSelected(id);
+    };
     return(
     <div className={styles.MainContainer}>
         <Header/>
         <div className={styles.Body}>
-            <div className={styles.listsContainer} onClick={SelectList}>
-            <Lists/>
+            <div className={styles.listsContainer}>
+            <Lists onSelectList={handleSelectList} />
             </div>
             <div className={styles.tasksContainer}>
-                {listSelected ? <>selecionou a lista</>: <>Não selecionou</>}
+            {listSelected !== null ? (
+                        <Tasks listId={listSelected} />
+                    ) : (
+                        <>Nenhuma lista selecionada</>
+                    )}
             </div>
         </div>
     </div>

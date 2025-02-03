@@ -1,9 +1,22 @@
+import { useEffect } from 'react';
 import styles from './styles.module.scss';
 
-export const Tasks = () =>{
+interface TasksProps {
+    listId: number;
+}
+
+
+
+export const Tasks = ({ listId }: TasksProps) =>{
+
+    useEffect(()=>{
+        
+    },[listId])
+
+
     return (
         <div>
-            Tasks
+            {listId}
         </div>
     )
 }

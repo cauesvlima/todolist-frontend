@@ -13,7 +13,11 @@ interface List {
     tasks: Task[];
 }
 
-export const Lists = () => {
+interface ListsProps {
+    onSelectList: (id: number) => void;
+}
+
+export const Lists = ({ onSelectList }: ListsProps) => {
     const { listGetAll } = useListServices();
     const [lists, setLists] = useState<List[]>([]);
     const [editName, setEditName] = useState(0);
@@ -27,11 +31,15 @@ export const Lists = () => {
 
     const viewEdit = (id:number) =>{
         setEditName(id);
-    }
+    };
 
     useEffect(() => {
         handleViewLists();
     }, []);
+
+    const updateList = () =>{
+        alert("oi");
+    };
 
     return (
         <div>
@@ -41,11 +49,11 @@ export const Lists = () => {
             <div className={styles.listBody}>
                 {lists.length > 0 ? (
                     lists.map((list) => (
-                        <div className={styles.listItem} onMouseEnter={() => viewEdit(list.id)} onMouseLeave={() => viewEdit(0)}  key={list.id}>
+                        <div className={styles.listItem}  onClick={() => onSelectList(list.id)} onMouseEnter={() => viewEdit(list.id)} onMouseLeave={() => viewEdit(0)}  key={list.id}>
                             <div className={styles.listName}>
                                 {list.nome}
                                 {editName=== list.id && (
-                                    <span>oi</span>
+                                    <span onClick={updateList}>Editar</span>
                                 )}
                             </div>
                             <div className={styles.listAmount}>
